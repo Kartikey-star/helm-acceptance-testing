@@ -18,10 +18,20 @@ spec:
         app.kubernetes.io/name: {{ template "nginx.name" . }}-ext
         app.kubernetes.io/instance: {{ .Release.Name }}
     spec:
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1000
+        seccompProfile:
+          type: RuntimeDefault
       containers:
         - name: {{ template "nginx.name" . }}
           image: "alpine:latest"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
+          securityContext:
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop:
+              - ALL
           command:
           - sleep
           - "50000"
@@ -57,10 +67,20 @@ spec:
         app.kubernetes.io/name: {{ template "nginx.name" . }}-v1beta1
         app.kubernetes.io/instance: {{ .Release.Name }}
     spec:
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1000
+        seccompProfile:
+          type: RuntimeDefault
       containers:
         - name: {{ template "nginx.name" . }}
           image: "alpine:latest"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
+          securityContext:
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop:
+              - ALL
           command:
           - sleep
           - "50000"
@@ -96,10 +116,20 @@ spec:
         app.kubernetes.io/name: {{ template "nginx.name" . }}-v1beta2
         app.kubernetes.io/instance: {{ .Release.Name }}
     spec:
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1000
+        seccompProfile:
+          type: RuntimeDefault
       containers:
         - name: {{ template "nginx.name" . }}
           image: "alpine:latest"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
+          securityContext:
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop:
+              - ALL
           command:
           - sleep
           - "50000"
@@ -135,10 +165,20 @@ spec:
         app.kubernetes.io/name: {{ template "nginx.name" . }}-v1
         app.kubernetes.io/instance: {{ .Release.Name }}
     spec:
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1000
+        seccompProfile:
+          type: RuntimeDefault
       containers:
         - name: {{ template "nginx.name" . }}
           image: "alpine:latest"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
+          securityContext:
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop:
+              - ALL
           command:
           - sleep
           - "50000"

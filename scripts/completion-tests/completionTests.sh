@@ -240,9 +240,9 @@ fi
 
 # Basic second level commands (static completion)
 if [ ! -z ${ROBOT_HELM_V3} ]; then
-    _completionTests_verifyCompletion "helm get " "all hooks manifest notes values"
+    _completionTests_verifyCompletion "helm get " "all hooks manifest metadata notes values"
 else
-    _completionTests_verifyCompletion "helm get " "all hooks manifest notes values"
+    _completionTests_verifyCompletion "helm get " "all hooks manifest metadata notes values"
 fi
 _completionTests_verifyCompletion "helm get h" "hooks"
 _completionTests_verifyCompletion "helm completion " "bash fish powershell zsh"
@@ -307,7 +307,7 @@ else
 fi
 if [ ! -z ${ROBOT_HELM_V3} ]; then
     _completionTests_verifyCompletion "helm --namespace mynamespace get h" "hooks"
-    _completionTests_verifyCompletion "helm -n mynamespace get " "all hooks manifest notes values"
+    _completionTests_verifyCompletion "helm -n mynamespace get " "all hooks manifest metadata notes values"
     if [ "$SHELL_TYPE" = bash ]; then
         _completionTests_verifyCompletion "helm get --name" "--namespace"
     else
